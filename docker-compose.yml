@@ -22,3 +22,4 @@ services:
       - 27019:27019
     volumes:
       - ~/projects/react-flask-app/scripts:/scripts
+      - ~/projects/react-flask-app/data/db:/data/db
