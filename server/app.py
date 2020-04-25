@@ -1,5 +1,6 @@
 import random
-from flask import Flask
+from flask import Flask, request
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
@@ -11,14 +12,24 @@ def index():
 
 @app.route('/quote')
 def quote():
-    return random.choice([
-        "A hungry man may only think of the food",
-        "Smart people have all the fun",
-        "Hard to beat someone who doesn't give up",
-        "Understanding yourself is the hardest thing in the world",
-        "You may only change the future",
-        "Choose habits over will power if you actually want to succeed"
-    ])
+
+    app.logger.info(f"ENTERING: {request.path}")
+
+    client = MongoClient('db')
+    db = client.quotesdb
+    data = list(db.quotes.find())
+
+    if len(data) < 1:
+        return {
+            "id": 0,
+            "quote": "Remember to init the db with InitDB.js"
+        }
+
+    row = random.choice(data)
+    return {
+        "id": int(row['id']),
+        "quote": row['quote']
+    }
 
 
 if __name__ == '__main__':

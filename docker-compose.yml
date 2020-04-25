@@ -11,10 +11,14 @@ services:
     build: server
     ports:
       - 5000:5000
+    volumes:
+      - ~/projects/react-flask-app/server:/app
 
   db:
-    image: mongo:latest
+    image: mongo:4.2.6
     ports:
       - 27017:27017
       - 27018:27018
       - 27019:27019
+    volumes:
+      - ~/projects/react-flask-app/scripts:/scripts
