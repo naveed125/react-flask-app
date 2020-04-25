@@ -12,3 +12,9 @@ services:
     ports:
       - 5000:5000
 
+  db:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+      - 27018:27018
+      - 27019:27019
