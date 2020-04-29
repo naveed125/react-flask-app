@@ -21,7 +21,7 @@ var quotes = [
     },
     {
         id: 6,
-        quote: "Logic will get you from A to B. Imagination will take you everywhere."
+        quote: "Insanity is doing the same thing over and over again and expecting different results."
     },
     {
         id: 7,

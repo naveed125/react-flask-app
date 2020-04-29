@@ -4,15 +4,18 @@ services:
   
   client:
     build: client
+    stdin_open: true
     ports:
-      - 80:80
+      - 80:3000
+    volumes:
+      - ./client:/app
 
   server:
     build: server
     ports:
       - 5000:5000
     volumes:
-      - ~/projects/react-flask-app/server:/app
+      - ./server:/app
 
   db:
     image: mongo:4.2.6
@@ -21,5 +24,5 @@ services:
       - 27018:27018
       - 27019:27019
     volumes:
-      - ~/projects/react-flask-app/scripts:/scripts
-      - ~/projects/react-flask-app/data/db:/data/db
+      - ./scripts:/scripts
+      - ./data/db:/data/db
