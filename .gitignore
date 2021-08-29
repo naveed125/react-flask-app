@@ -23,3 +23,5 @@ yarn-error.log*
 data/*
 !data/.gitkeep
 
+client/package-lock.json
+
